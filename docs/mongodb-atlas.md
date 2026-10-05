@@ -16,7 +16,7 @@
 4. Chỉ cho phép IP máy chạy ứng dụng truy cập cluster. Không commit connection string chứa mật khẩu.
 5. Sao chép các URI vào file `.env` cục bộ theo mẫu `.env.example`.
 
-## API của branch `work_database`
+## API của branch `work_session`
 
 ### Xem danh sách sách
 
@@ -45,4 +45,13 @@ Content-Type: application/json
 }
 ```
 
-API sẽ từ chối mã sách không bắt đầu bằng `010`. Branch này dùng connection mặc định để làm nền; việc định tuyến GET/POST qua hai tài khoản Atlas độc lập được triển khai ở branch `work_session`.
+API sẽ từ chối mã sách không bắt đầu bằng `010`. Ở branch `work_session`, GET được định tuyến qua tài khoản đọc và POST qua tài khoản ghi.
+
+## Session và giao diện
+
+- Trang danh sách: `GET /books`
+- Form thêm sách: `GET /books/new`, sau đó `POST /books`
+- Kiểm tra session Atlas: `GET /session-check`
+- Session được lưu trong collection `sessions` trên MongoDB Atlas, không dùng `MemoryStore`.
+- `GET` dùng `MONGO_URI_USER_READONLY`; `POST` dùng `MONGO_URI_USER_WRITEONLY`.
+- Thêm `SESSION_SECRET` vào `.env` cục bộ trước khi chạy. Không commit secret.
