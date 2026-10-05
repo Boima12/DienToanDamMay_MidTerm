@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-<<<<<<< HEAD
 
 const bookSchema = new mongoose.Schema(
   {
@@ -28,6 +27,11 @@ const bookSchema = new mongoose.Schema(
       required: [true, 'price is required'],
       min: [0, 'price must be a positive number'],
     },
+    priceAfterVat: {
+      type: Number,
+      required: [true, 'priceAfterVat is required'],
+      min: [0, 'priceAfterVat must be a positive number'],
+    },
     category: {
       type: String,
       trim: true,
@@ -36,8 +40,5 @@ const bookSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-=======
-const bookSchema = require('./bookSchema.js')
->>>>>>> work_session
 
-module.exports = mongoose.model('Book', bookSchema)
+module.exports = bookSchema
