@@ -7,7 +7,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 const connectDB = require('./db/connect.js')
 const notFoundMiddleware = require('./middleware/not_found.js')
 const errorHandlerMiddleware = require('./middleware/error_handler.js')
-const towers = require('./routes/towers.js')
+const books = require('./routes/books.js')
 
 const app = express()
 
@@ -15,7 +15,7 @@ const app = express()
 app.use(express.json())
 
 // routes
-app.use('/api/v1/towers', towers)
+app.use('/api/v1/books', books)
 
 // errors handling
 app.use(notFoundMiddleware)
