@@ -10,10 +10,7 @@ const createSessionMiddleware = require('./middleware/session.js')
 const notFoundMiddleware = require('./middleware/not_found.js')
 const errorHandlerMiddleware = require('./middleware/error_handler.js')
 const books = require('./routes/books.js')
-<<<<<<< HEAD
-=======
 const web = require('./routes/web.js')
->>>>>>> work_session
 
 const app = express()
 
@@ -26,10 +23,7 @@ app.use(createSessionMiddleware())
 
 // routes
 app.use('/api/v1/books', books)
-<<<<<<< HEAD
-=======
 app.use('/', web)
->>>>>>> work_session
 
 // errors handling
 app.use(notFoundMiddleware)
